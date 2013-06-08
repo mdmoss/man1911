@@ -1,0 +1,22 @@
+---
+layout: default
+title: man 1911
+---
+
+h1. student@pc:~$ man 1911
+
+So here we are at the end of the semester. Maybe you feel like you know C pretty well, and you've been doing _ok_ in the labs and assignments. Everything's going swimmingly, but all of a sudden, it happens. Someone throws an exam in your way.
+
+*Don't Panic*
+
+_The hard part is over_. If you've paid attention through the semester, gone to most of your lectures and shown up to a few tutes, you've hopefully got a decent idea of what's going on. Even if you don't feel like it, just by making it this far you've absorbed some thinking on how computers work and how we can make them do things for us (because we're lazy, right?).
+
+All that's left is a bit of practice at getting your instructions into a form that the computer can understand. The more you do it, the easier it gets.
+
+p=. *Your Mission: Pass the COMP1911 final exam[1]*
+
+p=. "Start Here":{{ site.baseurl }}/topics
+
+---
+
+fn1. I hope you'll do a lot better than a pass. All of you should. But at the very least, let's ensure you don't have to go through all this again.

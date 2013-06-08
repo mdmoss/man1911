@@ -1,0 +1,138 @@
+---
+layout: default
+title: Files
+---
+
+h1. Files
+
+h3. Input and Output
+
+As you've hopefully picked up on by now, there's only a few ways your programs can interact with the outside world. Two of the ways information can get in are arguments and from stdin, both of which you should have come across. Files are a third way.
+
+h3. Before you begin
+
+You need some tools to deal with files. Most of these live in @stdio.h@.
+
+{% highlight c %}
+
+#include <stdio.h>
+
+{% endhighlight %}
+<br />
+
+h3. Reading Files
+
+You need to open a book before you can read it, and the same is true for files. There's only one tool you can use to do this, and it's called @fopen@. It gives you back something that lets you interact with your newly opened file, called a @FILE *@. We also pass @fopen@ two parameters, namely a filepath and a mode. If we want to read the file, the mode should be @"r"@.
+
+_Important Note:_ If opening a file fails (for example, you try to read a file that doesn't exist) @fopen@ will return @NULL@. You have to remember to check for a @NULL@, and handle it appropriately.
+
+{% highlight c %}
+
+/* 
+ * This is taken from the man page for fopen. Try "man fopen" to see for yourself.
+ * FILE *fopen(const char *path, const char *mode);
+ */
+
+FILE *myFile = fopen("file.txt", "r");
+
+if (myFile == NULL) {
+    printf("Error opening file\n");
+    exit(1);
+}
+
+{% endhighlight %}
+<br />
+
+Now we have the file open, we can read from it. There's two main ways you'll do this. You might use @fgets@ in a loop, to read every line in the file as a string, or you might use @fscanf@ to extract some data from each line.
+
+{% highlight c %}
+
+/* Using fgets */
+
+#define LINE_LEN 256
+
+char line[LINE_LEN];
+while (fgets(line, LINE_LEN, myFile) != NULL) {
+    /* 
+     * line now contains a line from the file.
+     * We can do whatever we like to the file, a line at a time.
+     */
+}
+
+{% endhighlight %}
+<br />
+
+{% highlight c %}
+ 
+/* Using fscanf - we'll pretend the file contains integers, one per line. */
+
+int number;
+while (fscanf(myFile, "%d", &number) != EOF) {
+    /* Number contains each number from the file. */
+}
+
+{% endhighlight %}
+<br />
+
+h3. Writing Files
+
+To write to a file we also have to open it, except we pass @fopen@ a different mode parameter. We have a couple of choices. @"w"@ will open the file at the start, and anything we write will start there. @"a" will open the file at the end, and anything we write will start there. @"a"@ can be used to write at the end of a currently existing file.
+
+{% highlight c %}
+
+/* Open at the start, for writing */
+FILE *myFile = fopen("file.txt", "w");
+
+/* Open at the end, for writing */
+FILE *myFile = fopen("file.txt", "a");
+
+/* Remember to check for NULL, whichever more you use */
+if (myFile == NULL) {
+    printf("Error opening file\n");
+    exit(1);
+}
+{% endhighlight %}
+<br />
+
+Writing files is just like writing to stdout. The @fprintf@ function makes our life easy.
+
+{% highlight c %}
+
+/* Lets write an array of numbers to the file */
+#define NUMBERS_LEN 5
+int numbers[NUMBERS_LEN] = {0, 1, 2, 3, 4}
+
+int i;
+for (i = 0; i < 5; i++) {
+    fprintf(myFile, "%d\n", numbers[i]);
+}
+
+{% endhighlight %}
+<br />
+
+h3. Cleaning Up
+
+So we're finished with our file, but there's one thing left to do. Close the file using @fclose@.
+
+{% highlight c %}
+
+fclose(myFile);
+
+{% endhighlight %}
+<br />
+
+h2. Summary
+
+_Files are easy._
+
+*Reading:*
+* Open them with @fopen@ and mode @"r"@
+* Check for @NULL@
+* Read with @fgets@ or @fscanf@
+* Close with @fclose@
+
+*Writing:*
+* Open them with @fopen@ and mode @"w"@ or @"a"@
+* Check for @NULL@
+* Write with @fprintf@
+* Close with @fclose@

@@ -1,0 +1,8 @@
+---
+layout: default
+title: More Resources
+---
+
+h1. More Resources
+
+* "Comp1917 In A Day":http://comp1917.ripenetwork.com/. This covers most of the course in decent depth, and is a good next step if you want to improve your background computing knowledge. Read the warning on the homepage, though.
