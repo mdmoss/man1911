@@ -76,7 +76,7 @@ while (fscanf(myFile, "%d", &number) != EOF) {
 
 h3. Writing Files
 
-To write to a file we also have to open it, except we pass @fopen@ a different mode parameter. We have a couple of choices. @"w"@ will open the file at the start, and anything we write will start there. @"a" will open the file at the end, and anything we write will start there. @"a"@ can be used to write at the end of a currently existing file.
+To write to a file we also have to open it, except we pass @fopen@ a different mode parameter. We have a couple of choices. @"w"@ will open the file at the start, and anything we write will start there. @"a"@ will open the file at the end, and anything we write will start there. @"a"@ can be used to write at the end of a currently existing file.
 
 {% highlight c %}
 
@@ -86,7 +86,7 @@ FILE *myFile = fopen("file.txt", "w");
 /* Open at the end, for writing */
 FILE *myFile = fopen("file.txt", "a");
 
-/* Remember to check for NULL, whichever more you use */
+/* Remember to check for NULL, whichever mode you use */
 if (myFile == NULL) {
     printf("Error opening file\n");
     exit(1);
@@ -112,7 +112,7 @@ for (i = 0; i < 5; i++) {
 
 h3. Cleaning Up
 
-So we're finished with our file, but there's one thing left to do. Close the file using @fclose@.
+So we're finished with our file, but there's one thing left to do. Close the file using @fclose@. Remember you only need to close the file if you opened it. If you open it in an if statement, you should be careful where you closing it.
 
 {% highlight c %}
 
