@@ -47,4 +47,4 @@ your program should print
 
 {% endhighlight %}
 
-The user will enter at most 256 lines of input. Each line will end with a newline character. All lines will be the same length, and will be at most 256 characters in length. Correct arguments will always be supplied. Your solution should use a function to rotate the array. It is likely it will take a 2d input array, a length, and a 2d output array as parameters. This is not concrete, however.
+The user will enter at most 256 lines of input. Each line will end with a newline character. All lines will be the same length, and will be at most 256 characters in length. Correct arguments will always be supplied. Your solution should use a function to rotate the array. It is likely it will take a 2d input array, a length, and a 2d output array as parameters. This is not concrete, however. You may also find it useful to write an array copy function that takes the same parameters.

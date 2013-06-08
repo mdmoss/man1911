@@ -1,0 +1,20 @@
+---
+layout: default
+title: practice
+---
+
+h1. Practice
+
+It really does make perfect.
+
+While you're studying for the exam, writing programs and making sure you understand them is incredibly helpful. Your coursework from the semester should be your first stop for good practice questions. These are more likely to be similar to what you'll get from your current lecturer in an exam.
+
+The questions below are slightly more challenging, and might require you to combine ideas from several different areas of C. To encourage you to try them yourself, if you'd like to see my solution, email me your attempt. This way you can't get demotivated and take a sneak peak.
+
+h3. Problems
+
+*Swirl Series:*
+# "Swirl":{{ site.baseurl }}/practice/swirl/swirl.html
+# "Unswirl":{{ site.baseurl }}/practice/swirl/unswirl.html
+# "Multiswirl":{{ site.baseurl }}/practice/swirl/multiswirl.html
+_Skills: 2d Arrays, Reading from stdin, arguments, functions_
