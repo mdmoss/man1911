@@ -1,0 +1,13 @@
+---
+layout: default
+title: why?
+---
+
+h1. Why?
+
+I spent time on this site because so many people have problems with computing. It's not stupidity. It's not a lack of enthusiasm or effort. Hopefully by leaving in only the information people really need, I can make things easier for some people.
+
+h3. Thanks and Attribution
+
+* The UNSW CSE teaching staff, for helping me learn all this in the first place.
+* Beth Crane (@bethc) for help with proofreading

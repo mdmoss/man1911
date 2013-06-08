@@ -1,0 +1,50 @@
+---
+layout: default
+title: Arguments
+---
+
+h1. Arguments
+
+When someone runs your program, they can give it arguments on the command line.
+
+{% highlight sh %}
+
+# In this case, the program "prog" is given three arguments "one", "two", and "three"
+./prog one two three
+
+{% endhighlight %}
+<br />
+
+Each program you write has a main function. This function takes two arguments, @int argc@ and *char @argv[]@. These are how you can access the arguments given to your program. Remember, your program always gets its own name as the first argument.
+
+{% highlight c %}
+
+int main (int argc, char *argv[]) {
+    /*
+     * In this case, argc is equal to 4.
+     * argv is an array of strings. {"./prog", "one", "two", "three"}
+     */
+...
+
+{% endhighlight %}
+<br />
+
+You can use these arguments as strings. If you want them as integers or floats, the @atoi@ and @atof@ functions make your life easy.
+Remember to check argc, to make sure your program was actually given arguments.
+
+{% highlight sh %}
+
+./prog 54321
+
+{% endhighlight %}
+
+{% highlight c %}
+
+int main (int argc, char *argv[]) {
+    if (argc == 2) {
+        int number = atoi(argv[1]);
+        /* Number now equals 54321 */
+    }
+
+{% endhighlight %}
+<br />
