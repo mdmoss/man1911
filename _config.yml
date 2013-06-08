@@ -1,0 +1,6 @@
+name: man 1911
+pygments: true
+
+exclude: [deploy.sh]
+
+baseurl: "http://www.cse.unsw.edu.au/~mdm/man1911"
