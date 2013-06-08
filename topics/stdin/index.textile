@@ -31,7 +31,7 @@ fgets(line, MAX_LEN, stdin);
 
 h3. Reading multiple lines
 
-You can use @fgets@ in a loop to read multiple lines from @stdin@. As long as it has read input, it will return the array it was passed. Once it has read all input, it will return @NULL@. Remember, you can only read each line once. After you've read it, you can never get it back.
+You can use @fgets@ in a loop to read multiple lines from @stdin@. As long as it has read input, it will return the array it was passed. Once it has read all input, it will return @NULL@. Remember, you can only read each line once. After you've read it, you can never get it back. If the line is longer than the length passed to @fgets@, the next time it is called will read the rest of the line.
 
 {% highlight c %}
 
@@ -55,11 +55,12 @@ If you know that the user will give you some specific kind of input, for example
 int first;
 int second;
 
-scanf("%d %d", &first, &second);
+int read = scanf("%d %d", &first, &second);
 /* 
  * Assume the user types "123 456" while the program is running.
  * The variable first has the value 123.
  * The variable second has the value 456.
+ * The variable read has the value 2, because 2 values were read.
  */
 
 {% endhighlight %}
@@ -68,7 +69,6 @@ scanf("%d %d", &first, &second);
 h3. Converting multiple lines
 
 Just like we can use @fgets@ in a loop to read multiple lines, we can use @scanf@ in a loop to read and convert multiple lines. @scanf@ will return @EOF@ when it has read all it can from @stdin@.
-
 
 {% highlight c %}
 
@@ -85,6 +85,30 @@ while (scanf("%d %d", &first, &second) != EOF) {
 {% endhighlight %}
 <br />
 
+h3. Reading a whole file into an array
+
+Sometimes, you might want to read all of a file into a 2d array of chars. This is easily done with a loop, just remember not to read more lines than you have space for.
+
+{% highlight c %}
+
+#define MAX_LINES 256
+#define MAX_LEN 256
+
+char lines[MAX_LINES][MAX_LEN];
+int i;
+
+while (i < MAX_LINES && (fgets(lines[i], MAX_LEN, stdin) != NULL) {
+    i++; 
+}
+
+/*
+ * The whole file is in the array (or perhaps the array is full).
+ * We can use lines[?] to refer to strings, or lines[?][?] to refer to characters.
+ */
+
+{% endhighlight %}
+<br />
+
 h3. Redirecting files
 
 Remember computer scientists are lazy? Typing isn't so great. If you're going to input the same text to a file more than once, you can put it in a file and redirect that file to your program on @stdin@.
@@ -95,6 +119,16 @@ Remember computer scientists are lazy? Typing isn't so great. If you're going to
 # The file 'numbers.txt' contains the digits 1 2 3, seperated by spaces.
 ./prog < numbers.txt
 # The program gets the digits on stdin, seperated by spaces, exactly as in the file.
+
+{% endhighlight %}
+<br />
+
+Just like we can redirect input, we can redirect output. This causes everything the file prints to be written in the file */
+
+{% highlight sh %}
+
+./prog > output.txt
+# Any output from the program will be written to output.txt
 
 {% endhighlight %}
 <br />
