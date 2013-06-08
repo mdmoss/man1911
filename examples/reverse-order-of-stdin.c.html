@@ -1,0 +1,37 @@
+---
+layout: code-c
+title: reverse-order-of-stdin.c
+---
+/*
+ * reverse-order-of-stdin.c
+ *
+ * Matthew Moss
+ * mdm@cse.unsw.edu.au
+ * Written as an example for man 1911
+ *
+ * Reads from stdin, and then prints the lines it has read in reverse order.
+ * Stops when an end of file (ctrl-d) is read, or when the array is full.
+ */
+
+#include <stdio.h>
+
+#define MAX_LEN 256
+#define MAX_LINES 256
+
+int main (int argc, char *argv[]) {
+   
+    char lines[MAX_LINES][MAX_LEN];
+
+    int i = 0;
+    while (fgets(lines[i], MAX_LEN, stdin) != NULL) {
+        i++;
+    }
+
+    /* When we reach this point, the entire file is in the array (or maybe the array is full). */
+
+    while (i >= 0) {
+        printf ("%s", lines[i]);
+    }
+
+    return 0;
+}
