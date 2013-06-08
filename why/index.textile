@@ -11,6 +11,18 @@ h3. Thanks and Attribution
 
 * The UNSW CSE teaching staff, for helping me learn all this in the first place.
 * Beth Crane (@bethc) for help with proofreading
-* My tutes, for being so freaking awesome. 
-    ** 2012 cs1911 tue12-moog and wed18-bell. 
-    ** 2013 cs1911 thu12-spoons and fri12-spoons.
+* My tutes, for being so freaking awesome![1]
+<br />
+<br />
+<br />
+<br />
+
+---
+
+fn1. 
+<br />
+
+@tue12-moog cs1911 2012s1@
+@wed18-bell cs1911 2012s1@
+@thu12-spoons cs1911 2013s1@
+@fri12-spoons cs1911 2013s1@

@@ -17,4 +17,4 @@ h3. Problems
 # "Swirl":{{ site.baseurl }}/practice/swirl/swirl.html
 # "Unswirl":{{ site.baseurl }}/practice/swirl/unswirl.html
 # "Multiswirl":{{ site.baseurl }}/practice/swirl/multiswirl.html
-_Skills: 2d Arrays, Reading from stdin, arguments, functions_
+_Skills: 2d arrays, reading from stdin, arguments, functions_
