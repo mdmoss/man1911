@@ -1,0 +1,50 @@
+---
+layout: default
+title: unswirl
+---
+
+h1. Unswirl
+
+Your boss, in a sudden change of heart, has decided that swirled numbers are _sooo_ ninties. He's told you to unswirl them all again. You're not falling for it though, and decide to write a program that will save you some work next time he changes his mind.
+
+Write a program to rotate an array of characters, read from stdin. The direction to rotate will be passed as the first argument to your program, as either an 'c' character for clockwise, or an 'a' character for anticlockwise.
+
+For example, if the user enters
+
+{% highlight sh %}
+./unswirl c
+
+123
+456
+789
+
+{% endhighlight %}
+your program should print
+{% highlight sh %}
+
+741
+852
+963
+
+{% endhighlight %}
+
+If the user enters
+
+{% highlight sh %}
+./unswirl a
+
+123
+456
+789
+
+{% endhighlight %}
+your program should print
+{% highlight sh %}
+
+369
+258
+147
+
+{% endhighlight %}
+
+The user will enter at most 256 lines of input. Each line will end with a newline character. All lines will be the same length, and will be at most 256 characters in length. A correct argument will always be supplied.

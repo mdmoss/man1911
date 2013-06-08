@@ -1,0 +1,29 @@
+---
+layout: default
+title: swirl
+---
+
+h1. Swirl
+
+Your boss has decided that your office is boring. He's decided that by rotating grids of characters, you can make the place more exciting. Don't ask me, I'm not in management.
+
+Write a program to rotate an array of characters, read from stdin, clockwise by 90 degrees.
+
+For example, if the user enters
+{% highlight sh %}
+
+123
+456
+789
+
+{% endhighlight %}
+your program should print
+{% highlight sh %}
+
+741
+852
+963
+
+{% endhighlight %}
+
+The user will enter at most 256 lines of input. Each line will end with a newline character. All lines will be the same length, and will be at most 256 characters in length.

@@ -1,0 +1,50 @@
+---
+layout: default
+title: unswirl
+---
+
+h1. Multiswirl
+
+A memo has come down from HR criticising your company's work ethic. Apparently any solution worth engineering is now worth overengineering. It's urgent that you update your swirl program for some not quite specified reason!
+
+Write a program to rotate an array of characters, read from stdin. The direction to rotate will be passed as the first argument to your program, as either an 'c' character for clockwise, or an 'a' character for anticlockwise. The number of rotations to make will be passed as a second argument.
+
+For example, if the user enters
+
+{% highlight sh %}
+./unswirl c 2
+
+123
+456
+789
+
+{% endhighlight %}
+your program should print
+{% highlight sh %}
+
+987
+654
+321
+
+{% endhighlight %}
+
+If the user enters
+
+{% highlight sh %}
+./unswirl a 1
+
+123
+456
+789
+
+{% endhighlight %}
+your program should print
+{% highlight sh %}
+
+369
+258
+147
+
+{% endhighlight %}
+
+The user will enter at most 256 lines of input. Each line will end with a newline character. All lines will be the same length, and will be at most 256 characters in length. Correct arguments will always be supplied. Your solution should use a function to rotate the array. It is likely it will take a 2d input array, a length, and a 2d output array as parameters. This is not concrete, however.
