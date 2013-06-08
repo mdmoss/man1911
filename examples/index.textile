@@ -1,0 +1,10 @@
+---
+layout: default
+title: examples
+---
+
+h1. Examples
+
+Below are some examples of how certain features of C can be used and combined. These are not always fully functioning programs, but serve to illustrate specific cases and techniques.
+
+* "Reading lines from stdin":{{ site.baseurl }}/examples/echo-lines-from-stdin-with-fgets.c.html

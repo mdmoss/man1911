@@ -1,0 +1,29 @@
+---
+layout: code-c
+title: echo-lines-from-stdin-with-fgets
+---
+/*
+ * echo-lines-from-stdin-with-fgets.c
+ *
+ * Matthew Moss
+ * mdm@cse.unsw.edu.au
+ * Written as an example for man1911
+ *
+ * Reads from stdin line by line, and prints each line to the screen.
+ * Stops when an end of file (ctrl-d) is read.
+ */
+
+#include <stdio.h>
+
+#define MAX_LEN 256
+
+int main (int argc, char *argv[]) {
+   
+    char line[MAX_LEN];
+
+    while (fgets(line, MAX_LEN, stdin) != NULL) {
+        printf ("%s", line);
+    }
+
+    return 0;
+}
