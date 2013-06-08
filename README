@@ -1,0 +1,13 @@
+h1. man1911
+
+Student written examples and cheatsheets for UNSW COMP1911.
+
+h3. Development
+
+* Run a local instance with @jekyll --watch --baseurl=""@
+
+h3. Deployment
+
+* Set baseurl in _config.yaml to something sane. Use "" if you're installing to the domain root.
+* Build with Jekyll. @jekyll --build@
+* Copy files in _site to a web facing directory
