@@ -9,28 +9,27 @@ When someone runs your program, they can give it arguments on the command line.
 
 {% highlight sh %}
 
-# In this case, the program "prog" is given three arguments "one", "two", and "three"
-./prog one two three
+# In this case, the program "prog" is given three arguments "1", "two", and "3.0"
+./prog 1 two 3.0
 
 {% endhighlight %}
 <br />
 
-Each program you write has a main function. This function takes two arguments, @int argc@ and *char @argv[]@. These are how you can access the arguments given to your program. Remember, your program always gets its own name as the first argument.
+Each program you write has a main function. This function takes two arguments, @int argc@ and @char *argv[]@. These are how you can access the arguments given to your program. Remember, your program always gets its own name as the first argument (@argv[0]@).
 
 {% highlight c %}
 
 int main (int argc, char *argv[]) {
     /*
      * In this case, argc is equal to 4.
-     * argv is an array of strings. {"./prog", "one", "two", "three"}
+     * argv is an array of strings. {"./prog", "1", "two", "3.0"}
      */
 ...
 
 {% endhighlight %}
 <br />
 
-You can use these arguments as strings. If you want them as integers or floats, the @atoi@ and @atof@ functions make your life easy.
-Remember to check argc, to make sure your program was actually given arguments.
+You can use these arguments as strings. If you want them as integers or floats, the @atoi@ and @atof@ functions make your life easy. These functions live in @stdlib.h@. Remember to check argc, to make sure your program was actually given arguments.
 
 {% highlight sh %}
 
@@ -39,7 +38,8 @@ Remember to check argc, to make sure your program was actually given arguments.
 {% endhighlight %}
 
 {% highlight c %}
-
+...
+#include <stdlib.h>
 int main (int argc, char *argv[]) {
     if (argc == 2) {
         int number = atoi(argv[1]);

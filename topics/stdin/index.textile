@@ -1,0 +1,100 @@
+---
+layout: default
+title: stdin
+---
+
+h1. Reading from @stdin@
+
+When a user types text in the console while your program is running, the things they type reach your program through @stdin@. You can read from @stdin@ to get this input and use it. If you're going to interact with @stdin@, you need to be sure to include @stdio.h@.
+
+{% highlight c %}
+
+#include <stdio.h>
+
+{% endhighlight %}
+<br />
+
+h3. @fgets@
+
+The @fgets@ function can be used to read a whole line from @stdin@, all the way to a newline character (@'\n'@). It is given three parameters: a @char[]@, a place to put what it reads, an @int@, for the maximum number of characters to read, and a @FILE *@ to read from, in this case @stdin@. Remember, if what the user types ends with a newline, it will be stored in the array. The line always gets a null character (@'\0'@) at the end.
+
+{% highlight c %}
+
+#define MAX_LEN 256
+char line[MAX_LEN];
+
+/* Reads a single line from stdin */
+fgets(line, MAX_LEN, stdin);
+
+{% endhighlight %}
+<br />
+
+h3. Reading multiple lines
+
+You can use @fgets@ in a loop to read multiple lines from @stdin@. As long as it has read input, it will return the array it was passed. Once it has read all input, it will return @NULL@. Remember, you can only read each line once. After you've read it, you can never get it back.
+
+{% highlight c %}
+
+#define MAX_LEN 256
+char line[MAX_LEN];
+
+/* Reads all the lines from stdin */
+while (fgets(line, MAX_LEN, stdin) != NULL) {
+    /* Do something with line[] here */
+}
+
+{% endhighlight %}
+<br />
+
+h3. Converting with @scanf@
+
+If you know that the user will give you some specific kind of input, for example, two integers, you can use @scanf@ to convert them straight from @stdin@. This is often easier that seperating them from a string. @scanf@ takes a format string, which tells it what to look for, and some variables to put the results in. @scanf@ returns the number of items it reads succesfully.
+
+{% highlight c %}
+
+int first;
+int second;
+
+scanf("%d %d", &first, &second);
+/* 
+ * Assume the user types "123 456" while the program is running.
+ * The variable first has the value 123.
+ * The variable second has the value 456.
+ */
+
+{% endhighlight %}
+<br />
+
+h3. Converting multiple lines
+
+Just like we can use @fgets@ in a loop to read multiple lines, we can use @scanf@ in a loop to read and convert multiple lines. @scanf@ will return @EOF@ when it has read all it can from @stdin@.
+
+
+{% highlight c %}
+
+int first;
+int second;
+
+while (scanf("%d %d", &first, &second) != EOF) {
+    /* 
+     * Assume the user types "123 456 789 101" while the program is running.
+     * The loop will run twice, and the values of first and second will change each time.
+     */
+}
+
+{% endhighlight %}
+<br />
+
+h3. Redirecting files
+
+Remember computer scientists are lazy? Typing isn't so great. If you're going to input the same text to a file more than once, you can put it in a file and redirect that file to your program on @stdin@.
+
+
+{% highlight sh %}
+
+# The file 'numbers.txt' contains the digits 1 2 3, seperated by spaces.
+./prog < numbers.txt
+# The program gets the digits on stdin, seperated by spaces, exactly as in the file.
+
+{% endhighlight %}
+<br />
