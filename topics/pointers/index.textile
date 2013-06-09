@@ -1,0 +1,157 @@
+---
+layout: default
+title: pointers
+---
+
+h1. Pointers
+
+h3. A town called memory
+
+_Permit me a ramble here first. There's solid theory at the end, I promise_
+
+Once, in the far off land of PC, there was a town called memory. In this town there lived an int. His name: @bob@. His value? @'b'@.
+
+{% highlight c %}
+
+char bob = 'b';
+
+{% endhighlight %}
+
+The town planner for memory, Von Neumann, was a straightforward guy (may have even been a computer programmer). The town was a strange place, because it only had one street. All the houses, the parks, the university, even the town hall, were somewhere on this street, and every one had a number. All the residents of the town knew you could identify people just by the number of their house. They even had a special symbol to ask where someone lived, which looked suspiciously like an ampersand. For example, bob's house was number @43054@.
+
+{% highlight c %}
+
+char *bobs_address = &bob;
+printf ("%u\n", bobs_address);
+43054
+
+{% endhighlight %}
+
+There's some people live in the town who have some issues with privacy. They've got no problem staring through the windows in the street. If they see someone inside, there's no way they can know the resident's name, but their value is obvious.  Take a glance through the windows at bob's address, using the second of our special symbols, @*@.
+
+{% highlight c %}
+
+char value_at_bobs_address = *bobs_address;
+printf ("%c\n", value_at_bobs_address);
+...
+7
+
+{% endhighlight %}
+
+Hey! That's bob's value! Not a coincidence.
+
+---
+
+h3. A town called memory, part 2
+
+One day, bob wanted to throw a party. He didn't know his neighbors very well, so he decided to go house to house and find out their values. "About three people should do", said bob. So he started outside his house, walked down the road, and took a glance in as he walked past (bob has issues, don't ask me why). While he walked and looked, he jotted down notes in his diary.
+
+{% highlight c %}
+
+int i;
+for (i = 1; i <= 3; i++) {
+    char *house = bobs_address + i;
+    printf ("At address %u there lives a '%c'\n", house, *house);
+}
+...
+At address 43055 there lives a 'k'
+At address 43056 there lives a 'q'
+At address 43057 there lives a 'c'
+
+{% endhighlight %}
+---
+
+h3. A town called memory, part 3 (bob throws a party)
+
+Now parties in PC were a strange affair. The houses in the town were small, so it wouldn't be fun to have people over. Instead, they just yell to each other through side windows. To make it easier to serve people food and hold a conversation, there's a special way we can talk about all the people in the party row. Using [], we just give everyone their own special number. Bob gets the number 0, of course, because the party started at his house. This also makes it much easier to get everyone's values...
+
+{% highlight c %}
+
+int i;
+for (i = 0; i <= 3; i++) {
+    printf ("Number %d is a '%c'\n", i, bobs_address[i]);
+}
+...
+Number 0 is a 'b'
+Number 1 is a 'k'
+Number 2 is a 'q'
+Number 3 is a 'c'
+
+{% endhighlight %}
+
+_Ok, metaphor stretched so far it broke..._
+
+---
+---
+h3. Actual Content
+
+In case you haven't picked up on it, we're talking about pointers. Everything variable in your program has an address. This is the place in memory where they are stored. You can get the address of a variable with @&@. Addresses have a special type, which is the type of what they're pointing at, with an extra @*@. This is called a pointer, which is a variable that contains an address.
+
+{% highlight c %}
+
+int number = 54;
+int *number_pointer = &number;
+
+{% endhighlight %}
+
+You can use @*@ to get the value a pointer is pointing at.
+
+{% highlight c %}
+
+printf ("%d\n", number);
+printf ("%d\n", *number_pointer);
+...
+54
+54
+
+{% endhighlight %}
+
+Notice they're the same. It makes sense, because the value of number is also the value of what number_pointer is pointing at.
+
+The two symbols that are involved with pointers are @*@ and @&@, and they do opposite jobs. @&@ is used for referencing, and gets the address of a variable. @*@ is used for dereferencing, and gets the value a pointer is pointing to. Because of this, they can cancel each other out if they're next to each other, just like a square and a square root in maths.
+
+{% highlight c %}
+
+number == *(&number)
+number == number
+
+{% endhighlight %}
+
+Remember, a pointer is just a number. We can do maths with them (although you rarely will have to).
+
+{% highlight c %}
+
+number == *(&number + 5 - 5)
+number == number
+
+{% endhighlight %}
+<br />
+
+h3. Arrays unveiled
+
+Arrays are really useful things. They're also just pointers in disguise. When you make an array, ten ints long, the variable you get back is just a pointer to the start of the array. The variable has an added @const@, though, because it can't change once it's created.
+
+{% highlight c %}
+
+int array[] = {0, 1, 2, 3, 4};
+
+{% endhighlight %}
+
+Secretly, when you find a particular value in an array, the compiler takes the pointer to the first element, and adds the offset you give between the square brackets, and dereferences the result;
+
+{% highlight c %}
+
+printf ("%d\n", array[2]);
+printf ("%d\n", *(array + 2));
+...
+2
+2
+
+{% endhighlight %}
+<br />
+
+h3. @NULL@
+
+There's a special value of pointer called @NULL@; The reason we have @NULL@ is to symbolise a pointer to nothing. We can't just use any number, because every possible number is a valid pointer. Just let that sink in. Every number can be a pointer. Everything number points to something. We have NULL because sometimes we need to point to nothing.
+
+Think back to opening files. We have to check for @NULL@. Why? Because if @fopen@ fails, it returns a pointer to nothing. Why nothing? It's the easiest way to not be a file.
