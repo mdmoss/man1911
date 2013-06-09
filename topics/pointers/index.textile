@@ -22,19 +22,20 @@ The town planner for memory, Von Neumann, was a straightforward guy (may have ev
 {% highlight c %}
 
 char *bobs_address = &bob;
+/* Just FYI, %u is used to display an unsigned number. No negative pointers! */
 printf ("%u\n", bobs_address);
 43054
 
 {% endhighlight %}
 
-There's some people live in the town who have some issues with privacy. They've got no problem staring through the windows in the street. If they see someone inside, there's no way they can know the resident's name, but their value is obvious.  Take a glance through the windows at bob's address, using the second of our special symbols, @*@.
+There's some really nosy people in the town. They've got no problem staring through the windows in the street. If they see someone inside, there's no way they can know the resident's name, but their value is obvious.  Take a glance through the windows at bob's address, using the second of our special symbols, @*@.
 
 {% highlight c %}
 
 char value_at_bobs_address = *bobs_address;
-printf ("%c\n", value_at_bobs_address);
+printf ("'%c'\n", value_at_bobs_address);
 ...
-7
+'b'
 
 {% endhighlight %}
 
