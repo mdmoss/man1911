@@ -10,3 +10,4 @@ _Quick Disclaimer: This is a totally unofficial, student made site. There might 
 * "stdin":{{ site.baseurl }}/topics/stdin
 * "Arguments":{{ site.baseurl }}/topics/arguments
 * "Files":{{ site.baseurl }}/topics/files
+* "Pointers":{{ site.baseurl }}/topics/pointers
