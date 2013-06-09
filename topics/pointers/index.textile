@@ -9,7 +9,7 @@ h3. A town called memory
 
 _Permit me a ramble here first. There's solid theory at the end, I promise_
 
-Once, in the far off land of PC, there was a town called memory. In this town there lived an int. His name: @bob@. His value? @'b'@.
+Once, in the far off land of PC, there was a town called memory. In this town there lived a char. His name: @bob@. His value? @'b'@.
 
 {% highlight c %}
 
